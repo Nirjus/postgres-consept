@@ -1,0 +1,6 @@
+
+src/secret/.env
+
+node_modules
+
+.git
