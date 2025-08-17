@@ -1,3 +1,4 @@
+import { averagePostsPerUsers, countPostById } from "./concepts/aggregation.js";
 import {
   createUsersTable,
   deleteUser,
@@ -82,11 +83,23 @@ async function testJoinsQuery() {
   }
 }
 
+async function testAggrigationQuries() {
+  try {
+    // const countPosts = await countPostById();
+    // console.log(countPosts);
+    const avgPostsPerUser = await averagePostsPerUsers();
+    console.log(avgPostsPerUser);
+  } catch (error) {
+    console.log("[ERROR] ", error);
+  }
+}
+
 async function runallQueries() {
   // await testBasicQuery();
   // await testFileQuerySorting();
   // await testRelationship();
-  await testJoinsQuery();
+  // await testJoinsQuery();
+  await testAggrigationQuries();
 }
 
 runallQueries();
