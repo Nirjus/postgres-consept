@@ -10,6 +10,15 @@ import {
   getUserWhere,
   paginatedUsers,
 } from "./concepts/filtering-sorting.js";
+import {
+  getAllUsersAndTherePosts,
+  getUserWithPosts,
+} from "./concepts/joins.js";
+import {
+  createPostsTable,
+  deletePost,
+  insertNewPost,
+} from "./concepts/relationship.js";
 
 async function testBasicQuery() {
   try {
@@ -42,16 +51,42 @@ async function testFileQuerySorting() {
     // console.log(zFilteredUsers);
     // const sortedUser = await getSortedUsers("created_at", "DESC");
     // console.log(sortedUser);
-    const paginatedUser = await paginatedUsers(2, 3);
-    console.log("Paginated users", paginatedUser);
+    // const paginatedUser = await paginatedUsers(2, 3);
+    // console.log("Paginated users", paginatedUser);
   } catch (error) {
     console.log("[ERROR]", error);
   }
 }
 
+async function testRelationship() {
+  try {
+    // await createPostsTable();
+    // await insertNewPost("My Second post", "This is my Second post", 11);
+    // await insertNewPost("My third post", "This is my third post", 10);
+    // await insertNewPost("My forth post", "This is my forth post", 11);
+    // const result = await deletePost(2);
+    // console.log(result);
+  } catch (error) {
+    console.log("[ERROR] ", error);
+  }
+}
+
+async function testJoinsQuery() {
+  try {
+    // const usersWithPosts = await getUserWithPosts();
+    // console.log(usersWithPosts);
+    const allUsersWithAllPosts = await getAllUsersAndTherePosts();
+    console.log(allUsersWithAllPosts);
+  } catch (error) {
+    console.log("[ERROR] ", error);
+  }
+}
+
 async function runallQueries() {
   // await testBasicQuery();
-  await testFileQuerySorting();
+  // await testFileQuerySorting();
+  // await testRelationship();
+  await testJoinsQuery();
 }
 
 runallQueries();
